@@ -33,11 +33,11 @@ describe('Test Database methods', () => {
 
     it('should update the last entry', (done) => {
         const event ={
-            title: 'New Test event updated'
+            title: 'New event updated'
         };
         const response = db.updateEvent(eventId, event, false).then(data => {
             data.should.be.a('object');
-            data.event.title.should.eql('New Test event updated');
+            data.event.title.should.eql('New event updated');
             done();
         }).catch(err => {
             console.log('#2: Error: ', err.message);
