@@ -22,7 +22,7 @@ describe('Database methods', () => {
         };
         const response = db.addEvent(event, false).then(data => {
             data.should.be.a('object');
-            data.event.title.should.eql('New Test event');
+            data.event.title.should.eql('New event');
             eventId = data.event.id;
             done();
         }).catch(err => {
