@@ -7,7 +7,7 @@
     "test": "TESTING=true nyc mocha ./src/**/*.test.js --exit "
   },
   "dependencies": {
-    "@google-cloud/firestore": "^4.9.7",
+    "@google-cloud/firestore": "^4.14.1",
     "cookie-parser": "^1.4.5",
     "debug": "^4.3.1",
     "express": "^4.17.1",
