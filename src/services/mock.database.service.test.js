@@ -4,7 +4,7 @@ const should = chai.should();
 const expect = chai.expect;
 const MockDatabaseService = require("./class.mock.database.service");
 
-describe('Database methods', () => {
+describe('Test Database methods', () => {
     let db = new MockDatabaseService();
     let eventId;
     let eventsLength;
@@ -17,12 +17,12 @@ describe('Database methods', () => {
 
     it('should add an event and return only the new event', (done) => {
         const event ={
-            title: 'New event',
-            description: 'Event Description'
+            title: 'New Test event',
+            description: 'Test Event Description'
         };
         const response = db.addEvent(event, false).then(data => {
             data.should.be.a('object');
-            data.event.title.should.eql('New event');
+            data.event.title.should.eql('New Test event');
             eventId = data.event.id;
             done();
         }).catch(err => {
@@ -33,11 +33,11 @@ describe('Database methods', () => {
 
     it('should update the last entry', (done) => {
         const event ={
-            title: 'New event updated'
+            title: 'New Test event updated'
         };
         const response = db.updateEvent(eventId, event, false).then(data => {
             data.should.be.a('object');
-            data.event.title.should.eql('New event updated');
+            data.event.title.should.eql('New Test event updated');
             done();
         }).catch(err => {
             console.log('#2: Error: ', err.message);
@@ -48,7 +48,7 @@ describe('Database methods', () => {
     it('should get an entry by valid id', (done) => {
         const response = db.getEventById(eventId).then(data => {
             data.should.be.an('object');
-            data.event.title.should.eql('New event updated');
+            data.event.title.should.eql('New Test event updated');
             done();
         }).catch(err => {
             console.log('#11: Error: ', err.message);
@@ -70,7 +70,7 @@ describe('Database methods', () => {
     it('should delete the last entry setting it to null', (done) => {
         const response = db.deleteEvent(eventId, false).then(data => {
             data.should.be.a('object');
-            data.deletedEvent.title.should.eql('New event updated');
+            data.deletedEvent.title.should.eql('New Test event updated');
             done();
         }).catch(err => {
             console.log('#3: Error: ', err.message);
