@@ -4,7 +4,7 @@ const should = chai.should();
 const expect = chai.expect;
 const MockDatabaseService = require("./class.mock.database.service");
 
-describe('Test Database methods', () => {
+describe('Database methods', () => {
     let db = new MockDatabaseService();
     let eventId;
     let eventsLength;
@@ -17,8 +17,8 @@ describe('Test Database methods', () => {
 
     it('should add an event and return only the new event', (done) => {
         const event ={
-            title: 'New Test event',
-            description: 'Test Event Description'
+            title: 'New event',
+            description: 'Event Description'
         };
         const response = db.addEvent(event, false).then(data => {
             data.should.be.a('object');
@@ -48,7 +48,7 @@ describe('Test Database methods', () => {
     it('should get an entry by valid id', (done) => {
         const response = db.getEventById(eventId).then(data => {
             data.should.be.an('object');
-            data.event.title.should.eql('New Test event updated');
+            data.event.title.should.eql('New event updated');
             done();
         }).catch(err => {
             console.log('#11: Error: ', err.message);
@@ -70,7 +70,7 @@ describe('Test Database methods', () => {
     it('should delete the last entry setting it to null', (done) => {
         const response = db.deleteEvent(eventId, false).then(data => {
             data.should.be.a('object');
-            data.deletedEvent.title.should.eql('New Test event updated');
+            data.deletedEvent.title.should.eql('New event updated');
             done();
         }).catch(err => {
             console.log('#3: Error: ', err.message);
